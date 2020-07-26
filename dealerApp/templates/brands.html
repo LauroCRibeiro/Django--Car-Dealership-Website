@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h3 class="mb-4 border-bottom pb-3">All Brands</h3>
+<div class="row">
+	{% for brand in brands %}
+	<div class="col-md-3 mb-4">
+		<div class="card">
+		  <a href="/brand/{{brand.brand.id}}"><img width="100" src="/uploads/{{brand.brand.image}}" class="card-img-top img-fluid p-5" alt="{{brand.name}}"></a>
+		  <hr/>
+		  <div class="card-body">
+		    <h5 class="card-title"><a href="/brand/{{brand.brand.id}}">{{brand.brand.name}}</a></h5>
+		    <a href="/brand/{{brand.brand.id}}" class="btn btn-primary">Added Cars <span class="badge badge-dark">{{brand.total_cars}}</span></a>
+		  </div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

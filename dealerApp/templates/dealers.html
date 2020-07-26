@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h3 class="mb-4 border-bottom pb-3">All Dealers</h3>
+<div class="row">
+	{% for d in dealers %}
+	<div class="col-md-3 mb-4">
+		<div class="card shadow">
+		  <div class="card-body">
+		    <h5 class="card-title"><a href="#">{{d.dealer.name}}</a></h5>
+		    <p class="card-text">Location: {{d.dealer.location}}</p>
+		    <a href="/dealer/{{d.dealer.id}}" class="btn btn-primary">Added Cars <span class="badge badge-dark">{{d.total_cars}}</span></a>
+		  </div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

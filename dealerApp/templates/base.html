@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Car Dealer App</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}" />
+	<script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>
+</head>
+<body class="bg-light">
+	<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+  <a class="navbar-brand mr-auto mr-lg-0" href="/">Car Dealer App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto">
+      <li><a class="nav-link" href="/brands">All Brands</a></li>
+      <li><a class="nav-link" href="/dealers">All Dealers</a></li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="/">
+      {% csrf_token %}
+      <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<div class="nav-scroller bg-white border-bottom mb-4">
+  <nav class="nav nav-underline">
+    {% if 'userSession' in request.session %}
+    <a class="nav-link" href="/profile">Profile</a>
+    <a class="nav-link" href="/logout">Logout</a>
+    {% else %}
+    <a class="nav-link" href="/login">Login</a>
+    <a class="nav-link" href="/register">Register</a>
+    {% endif %}
+  </nav>
+</div>
+	<div class="container-fluid mb-5">
+<!-- 		<div class="jumbotron jumbotron-fluid">
+			<form>
+			  <div class="form-row">
+			    <div class="col offset-3">
+			      <input type="text" class="form-control form-control-lg" placeholder="Search Car">
+			    </div>
+			    <div class="col">
+			      <input type="submit" class="btn btn-primary btn-lg">
+			    </div>
+			  </div>
+			</form>
+		</div> -->
+		{% block content %}
+		{% endblock %}
+	</div>
+<footer class="text-muted mt-5 border-top p-4 bg-light">
+  <div class="container-fluid">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>Car Dealer Application is  example of Django Scripts, You can download source code from projectsplaza.com</p>
+    <p>New to Bootstrap? <a href="#">Visit the homepage</a> or read our <a href="#">Django Scripts</a>.</p>
+  </div>
+</footer>
+<script type="text/javascript" src="{% static 'bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'custom.js' %}"></script>
+</body>
+</html>

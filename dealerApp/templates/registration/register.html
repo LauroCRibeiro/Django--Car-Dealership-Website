@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="row">
+	<div class="col-md-6 offset-3">
+		<div class="card">
+			<div class="card-header">
+				<h5 class="card-title">Register</h3>
+			</div>
+			<div class="card-body">
+				<form method="POST" action="register">
+					{% csrf_token %}
+					{% if messages %}
+						{% for message in messages %}
+						{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+						<p class="text-danger">{{message}}</p>
+						{% else %}
+						<p class="text-success">{{message}}</p>
+						{% endif %}
+						{% endfor %}
+					{% endif %}
+					<table class="table table-bordered">
+						<tr>
+							<th>Full Name</th>
+							<td><input type="text" placeholder="Full Name" class="form-control" name="full_name" /></td>
+						</tr>
+						<tr>
+							<th>Email</th>
+							<td><input type="text" placeholder="Email" class="form-control" name="email" /></td>
+						</tr>
+						<tr>
+							<th>Mobile</th>
+							<td><input type="text" placeholder="Mobile" class="form-control" name="mobile" /></td>
+						</tr>
+						<tr>
+							<th>Username <span class="text-danger">*</span></th>
+							<td><input type="text" placeholder="Username" class="form-control" name="username" /></td>
+						</tr>
+						<tr>
+							<th>Password <span class="text-danger">*</span></th>
+							<td><input type="password" placeholder="Password" class="form-control" name="password" /></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="submit" value="Register" class="btn btn-primary" />
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

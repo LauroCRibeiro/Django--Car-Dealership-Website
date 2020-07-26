@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h3 class="mb-4 border-bottom pb-3">Dealer Products 
+	<!-- <span class="float-right">
+		<select class="form-control-sm mb-2">
+			<option>By Popularity</option>
+			<option>Most Rated</option>
+			<option>Price: Low to High</option>
+			<option>Price: High to Low</option>
+			<option>Kilometer: Low to High</option>
+			<option>Kilometer: High to Low</option>
+		</select>
+	</span> -->
+</h3>
+<div class="row">
+	<div class="col-md-3">
+	<!-- Brands -->
+		<div class="card mb-4">
+		  <h5 class="card-header">Brands</h5>
+		  <div class="card-body">
+		  	{% for brand in brands %}
+		  	<a href="/brand/{{brand.id}}">{{brand.name}}</a>
+			<hr/>
+			{% endfor %}
+		  </div>
+		</div>
+	<!-- ##	End Brands Filter -->
+	</div>
+
+	<div class="col-md-9">
+		<div class="row product-list">
+			{% if products %}
+			{% for p in products %}
+			<div class="col-md-4 mb-4">
+				<div class="card">
+				  <a href="/detail/{{p.product.id}}"><img src="/uploads/{{p.product_images.pro_img}}" class="card-img-top" alt="{{p.product.title}}"></a>
+				  <div class="card-body">
+				    <h5 class="card-title"><a href="/detail/{{p.product.id}}">{{p.product.title}}</a></h5>
+				    <p class="card-text">{{p.product.description}}</p>
+				    <a href="/detail/{{p.product.id}}" class="btn btn-primary">Full Detail</a>
+				  </div>
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+			<p class="alert alert-warning">No data Found!!</p>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
