@@ -6,5 +6,5 @@ User Login/Register/Update profile
 
 Send inquiry email to the dealer - Name/Email/Mobile
 
-Admin Panel: Dealer Master/ Brand Master/Inqury List/ Car Master fully detailed
+Admin Panel: Dealer Master/ Brand Master/Inquiry List/ Car Master fully detailed
 
